@@ -88,6 +88,10 @@ export default function App() {
     setSelectedId(null);
   }
 
+  function handleAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
+  }
+
   // ---------------------USE-EFFECT HOOK (START)----------------------------------
   useEffect(
     function () {
@@ -149,6 +153,7 @@ export default function App() {
             <MovieDetails
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatched}
             />
           ) : (
             <>
@@ -162,10 +167,12 @@ export default function App() {
   );
 }
 
+// --------------LOADER COMPONENT---------------------
 function Loader() {
   return <p className="loader">Loading...</p>;
 }
 
+// --------------ERRORMESSAGE COMPONENT---------------------
 function ErrorMessage({ message }) {
   return (
     <p className="error">
@@ -174,6 +181,7 @@ function ErrorMessage({ message }) {
   );
 }
 
+// --------------NAVBAR COMPONENT---------------------
 function NavBar({ children }) {
   return (
     <nav className="nav-bar">
@@ -183,6 +191,7 @@ function NavBar({ children }) {
   );
 }
 
+// --------------LOGO COMPONENT---------------------
 function Logo() {
   return (
     <div className="logo">
@@ -191,6 +200,8 @@ function Logo() {
     </div>
   );
 }
+
+// --------------SEARCHBAR COMPONENT---------------------
 function SearchBar({ query, setQuery }) {
   return (
     <input
@@ -202,6 +213,8 @@ function SearchBar({ query, setQuery }) {
     />
   );
 }
+
+// --------------NUMRESULTS COMPONENT---------------------
 function NumResults({ movies }) {
   return (
     <p className="num-results">
@@ -210,10 +223,12 @@ function NumResults({ movies }) {
   );
 }
 
+// --------------MAIN COMPONENT---------------------
 function Main({ children }) {
   return <main className="main">{children}</main>;
 }
 
+// --------------BOX COMPONENT---------------------
 function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -227,6 +242,7 @@ function Box({ children }) {
   );
 }
 
+// ------------------MOVIELIST COMPONENT-------------------------
 function MovieList({ movies, onSelectMovie }) {
   return (
     <ul className="list list-movies">
@@ -237,6 +253,7 @@ function MovieList({ movies, onSelectMovie }) {
   );
 }
 
+// ------------------MOVIE COMPONENT-------------------------
 function Movie({ movie, onSelectMovie }) {
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
@@ -252,7 +269,8 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
-function MovieDetails({ selectedId, onCloseMovie }) {
+// ------------------MOVIEDETAILS COMPONENT-------------------------
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -269,7 +287,18 @@ function MovieDetails({ selectedId, onCloseMovie }) {
     Genre: genre,
   } = movie;
 
-  console.log(title, year);
+  function handleAdd() {
+    const newWatchedMovie = {
+      imdbId: selectedId,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: Number(runtime.split(" ").at(0)),
+    };
+    onAddWatched(newWatchedMovie);
+    onCloseMovie();
+  }
 
   useEffect(
     function () {
@@ -314,6 +343,10 @@ function MovieDetails({ selectedId, onCloseMovie }) {
           <section>
             <div className="rating">
               <StarRating maxRating={10} size={24} />
+
+              <button className="btn-add" onClick={handleAdd}>
+                + Add to list
+              </button>
             </div>
             <p>
               <em>{plot}</em>
@@ -326,7 +359,9 @@ function MovieDetails({ selectedId, onCloseMovie }) {
     </div>
   );
 }
+// ------------------END OF MOVIEDETAILS COMPONENT-------------------------
 
+// ------------------WATCHEDSUMMARY COMPONENT-------------------------------
 function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
@@ -357,6 +392,7 @@ function WatchedSummary({ watched }) {
   );
 }
 
+// ------------------WATCHEDMOVIESLIST COMPONENT-------------------------------
 function WatchedMoviesList({ watched }) {
   return (
     <ul className="list">
@@ -367,11 +403,12 @@ function WatchedMoviesList({ watched }) {
   );
 }
 
+// ------------------WATCHEDMOVIE COMPONENT-------------------------------
 function WatchedMovie({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
