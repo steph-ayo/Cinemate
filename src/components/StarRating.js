@@ -47,7 +47,7 @@ export default function StarRating({
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className={className}>
       <div style={starContainerStyle}>
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
@@ -77,7 +77,7 @@ function Star({ onRate, full, onHoverIn, onHoverOut, color, size }) {
     height: `${size}px`,
     display: "block",
     cursor: "pointer",
-    color,
+    // color,
   };
 
   return (
