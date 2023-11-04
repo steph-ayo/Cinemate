@@ -53,6 +53,7 @@ const average = (arr) =>
 
 const KEY = "f84fc31d";
 
+// ----------------------------- APP COMPONENT(START) -----------------------------
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
@@ -183,6 +184,7 @@ export default function App() {
     </>
   );
 }
+// ----------------------------- APP COMPONENT(END) ----------------------------
 
 function Loader() {
   return <p className="loader">Loading...</p>;
@@ -340,19 +342,31 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
+  // useEffect(
+  //   function () {
+  //     function callback(e) {
+  //       if (e.code === "Escape") {
+  //         onCloseMovie();
+  //       }
+  //     }
+
+  //     document.addEventListener("keydown", callback);
+
+  //     return function () {
+  //       document.removeEventListener("keydown", callback);
+  //     };
+  //   },
+  //   [onCloseMovie]
+  // );
+
   useEffect(
     function () {
-      function callback(e) {
+      document.addEventListener("keydown", function (e) {
         if (e.code === "Escape") {
           onCloseMovie();
+          console.log("CLOSING");
         }
-      }
-
-      document.addEventListener("keydown", callback);
-
-      return function () {
-        document.removeEventListener("keydown", callback);
-      };
+      });
     },
     [onCloseMovie]
   );
