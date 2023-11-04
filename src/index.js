@@ -3,7 +3,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App";
-// import Appv2 from "./Appv2";
 // import StarRating from "./StarRating";
 
 // function Test() {
