@@ -25,6 +25,8 @@ export default function App() {
 
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
+
+    localStorage.setItem("watched", watched);
   }
 
   function handleDeleteWatched(id) {
@@ -285,7 +287,10 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     };
 
     onAddWatched(newWatchedMovie);
-    // onCloseMovie();
+    onCloseMovie();
+
+    // setAvgRating(Number(imdbRating));
+    // setAvgRating((avgRating) => (avgRating + userRating) / 2);
   }
 
   useEffect(
@@ -358,7 +363,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
             </div>
           </header>
 
-          <p>{avgRating}</p>
+          {/* <p>{avgRating}</p> */}
 
           <section>
             <div className="rating">
