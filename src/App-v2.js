@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import StarRating from "./components/StarRating";
+import StarRating from "./StarRating";
 
 const tempMovieData = [
   {
@@ -51,8 +51,9 @@ const tempWatchedData = [
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-const KEY = "f84fc31d";
+const KEY = "89b27d9";
 
+// ----------------------------- APP COMPONENT(START) -----------------------------
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
@@ -183,11 +184,15 @@ export default function App() {
     </>
   );
 }
+// ----------------------------- APP COMPONENT(END) ----------------------------
 
+// ----------LOADER COMPONENT (START)---------------
 function Loader() {
   return <p className="loader">Loading...</p>;
 }
+// ----------LOADER COMPONENT (END)---------------
 
+// ----------ERROR MESSAGE COMPONENT (START)---------------
 function ErrorMessage({ message }) {
   return (
     <p className="error">
@@ -195,7 +200,9 @@ function ErrorMessage({ message }) {
     </p>
   );
 }
+// ----------ERROR MESSAGE COMPONENT (END)---------------
 
+// ----------NAVBAR COMPONENT (START)---------------
 function NavBar({ children }) {
   return (
     <nav className="nav-bar">
@@ -204,7 +211,9 @@ function NavBar({ children }) {
     </nav>
   );
 }
+// ----------NAAVBAR COMPONENT (END)---------------
 
+// ----------LOGO COMPONENT (START)---------------
 function Logo() {
   return (
     <div className="logo">
@@ -213,7 +222,9 @@ function Logo() {
     </div>
   );
 }
+// ----------LOGO COMPONENT (END)---------------
 
+// --------------SEARCH COMPONENT (START)---------------
 function Search({ query, setQuery }) {
   return (
     <input
@@ -225,7 +236,9 @@ function Search({ query, setQuery }) {
     />
   );
 }
+// ----------------SEARCH COMPONENT (END)---------------
 
+// ----------NUMRESULTS COMPONENT (START)---------------
 function NumResults({ movies }) {
   return (
     <p className="num-results">
@@ -233,11 +246,15 @@ function NumResults({ movies }) {
     </p>
   );
 }
+// ----------NUMRESULTS COMPONENT (END)---------------
 
+// ------------------MAIN COMPONENT (START)-------------------------
 function Main({ children }) {
   return <main className="main">{children}</main>;
 }
+// ------------------MAIN COMPONENT (END)-------------------------
 
+// ------------------BOX COMPONENT (START)-------------------------
 function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
 
@@ -251,32 +268,9 @@ function Box({ children }) {
     </div>
   );
 }
+// ------------------BOX COMPONENT (END)-------------------------
 
-/*
-function WatchedBox() {
-  const [watched, setWatched] = useState(tempWatchedData);
-  const [isOpen2, setIsOpen2] = useState(true);
-
-  return (
-    <div className="box">
-      <button
-        className="btn-toggle"
-        onClick={() => setIsOpen2((open) => !open)}
-      >
-        {isOpen2 ? "–" : "+"}
-      </button>
-
-      {isOpen2 && (
-        <>
-          <WatchedSummary watched={watched} />
-          <WatchedMoviesList watched={watched} />
-        </>
-      )}
-    </div>
-  );
-}
-*/
-
+// ---------MOVIE LIST COMPONENT (START)-------------------------
 function MovieList({ movies, onSelectMovie }) {
   return (
     <ul className="list list-movies">
@@ -286,7 +280,9 @@ function MovieList({ movies, onSelectMovie }) {
     </ul>
   );
 }
+// ---------MOVIE LIST COMPONENT (END)-------------------------
 
+// ---------MOVIE COMPONENT (START)-------------------------
 function Movie({ movie, onSelectMovie }) {
   return (
     <li onClick={() => onSelectMovie(movie.imdbID)}>
@@ -301,7 +297,9 @@ function Movie({ movie, onSelectMovie }) {
     </li>
   );
 }
+// ---------MOVIE COMPONENT (END)-------------------------
 
+// ---------------------MOVIE DETAILS COMPONENT (START)-------------------------
 function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -345,9 +343,9 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       function callback(e) {
         if (e.code === "Escape") {
           onCloseMovie();
+          // console.log("CLOSING");
         }
       }
-
       document.addEventListener("keydown", callback);
 
       return function () {
@@ -441,7 +439,9 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     </div>
   );
 }
+// ---------------------MOVIE DETAILS COMPONENT (END)-------------------------
 
+// ------------WATCHED SUMMARY COMPONENT (START)------------------
 function WatchedSummary({ watched }) {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
@@ -471,7 +471,9 @@ function WatchedSummary({ watched }) {
     </div>
   );
 }
+// ------------WATCHED SUMMARY COMPONENT (END)------------------
 
+// ------------WATCHED MOVIE LIST COMPONENT (START)------------------
 function WatchedMoviesList({ watched, onDeleteWatched }) {
   return (
     <ul className="list">
@@ -485,7 +487,9 @@ function WatchedMoviesList({ watched, onDeleteWatched }) {
     </ul>
   );
 }
+// ------------WATCHED MOVIE LIST COMPONENT (END)------------------
 
+// ----------------------WATCHED MOVIE COMPONENT (START)------------------------
 function WatchedMovie({ movie, onDeleteWatched }) {
   return (
     <li>
@@ -515,3 +519,4 @@ function WatchedMovie({ movie, onDeleteWatched }) {
     </li>
   );
 }
+// ---------------WATCHED MOVIE COMPONENT (END)-----------------
