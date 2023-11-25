@@ -339,8 +339,7 @@ body {
   justify-content: center;
 }
 
-/* @media screen and (max-width: 768px) {
-  
+@media screen and (max-width: 768px) {
   .logo h1 {
     font-size: 2rem;
   }
@@ -354,5 +353,5 @@ body {
     justify-self: end;
     font-size: 1.5rem;
   }
-} */
+}
 /* --------------NAVBAR (END)------------------- */
