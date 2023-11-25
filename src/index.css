@@ -27,6 +27,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-background-900);
   padding: 2.4rem;
+  border: 2px solid red;
 }
 
 /* ******* */
@@ -39,6 +40,7 @@ body {
   padding: 0 3.2rem;
   background-color: var(--color-primary);
   border-radius: 0.9rem;
+  border: 2px solid red;
 }
 
 .main {
@@ -47,6 +49,7 @@ body {
   display: flex;
   gap: 2.4rem;
   justify-content: center;
+  border: 2px solid blue;
 }
 
 .box {
@@ -56,6 +59,7 @@ body {
   border-radius: 0.9rem;
   overflow: scroll;
   position: relative;
+  border: 2px solid rgb(49, 251, 13);
 }
 
 .loader {
@@ -350,8 +354,57 @@ body {
   }
 
   .num-results {
-    justify-self: end;
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  .nav-bar {
+    padding: 0 0.5rem;
+  }
+
+  .logo {
+    gap: 0.3rem;
+  }
+
+  .logo span {
+    font-size: 3rem;
+  }
+
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+
+  .search {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    width: 20rem;
+    border-radius: 0.7rem;
+    margin-left: 0.5rem;
+  }
+
+  .num-results {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .search {
+    width: 17rem;
+  }
+
+  .num-results {
+    font-size: 0.8rem;
   }
 }
 /* --------------NAVBAR (END)------------------- */
