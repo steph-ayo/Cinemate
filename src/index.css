@@ -343,6 +343,8 @@ body {
   justify-content: center;
 }
 
+/* --------------MEDIA QUERY (START)------------------- */
+
 @media screen and (max-width: 768px) {
   .logo h1 {
     font-size: 2rem;
@@ -407,4 +409,4 @@ body {
     font-size: 0.8rem;
   }
 }
-/* --------------NAVBAR (END)------------------- */
+/* --------------MEDIA QUERY (END)------------------- */
