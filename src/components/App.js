@@ -44,13 +44,6 @@ export default function App() {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
-  // useEffect(
-  //   function () {
-  //     localStorage.setItem("watched", JSON.stringify(watched));
-  //   },
-  //   [watched]
-  // );
-
   return (
     <>
       <NavBar>
