@@ -1,0 +1,15 @@
+.box {
+  width: 42rem;
+  max-width: 42rem;
+  background-color: var(--color-background-500);
+  border-radius: 0.9rem;
+  overflow: scroll;
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .box {
+    width: 100%;
+    top: 0;
+  }
+}

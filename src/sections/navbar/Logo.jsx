@@ -6,7 +6,7 @@ export default function Logo() {
       <span role="img" class="animate__animated animate__bounce">
         🍿
       </span>
-      <h1 class="animate__animated animate__bounce">usePopcorn</h1>
+      <h1 class="animate__animated animate__bounce">Cinemate</h1>
     </div>
   );
 }

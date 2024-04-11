@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useKey } from "../Usekey";
+import { useKey } from "../../Usekey";
 
 export default function Search({ query, setQuery }) {
   const inputEl = useRef(null);

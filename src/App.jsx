@@ -1,18 +1,16 @@
 import { useState } from "react";
-import { useMovies } from "../UseMovies";
-import { useLocalStorageState } from "../UseLocalStorageState";
+import { useMovies } from "./UseMovies";
+import { useLocalStorageState } from "./UseLocalStorageState";
 
-import Loader from "./Loader";
-import ErrorMessage from "./ErrorMessage";
-import NavBar from "./NavBar.1";
-import Search from "./Search";
-import NumResults from "./NumResults";
-import Main from "./Main";
-import Box from "./Box";
-import MovieList from "./MovieList";
-import MovieDetails from "./MovieDetails";
-import WatchedSummary from "./WatchedSummary";
-import WatchedMoviesList from "./WatchedMoviesList";
+import Loader from "./components/Loader";
+import ErrorMessage from "./components/ErrorMessage";
+import NavBar from "./sections/navbar/NavBar";
+import Main from "./sections/main/Main";
+import Box from "./sections/box/Box";
+import MovieList from "./components/MovieList";
+import MovieDetails from "./components/MovieDetails";
+import WatchedSummary from "./components/WatchedSummary";
+import WatchedMoviesList from "./components/WatchedMoviesList";
 
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -46,14 +44,10 @@ export default function App() {
 
   return (
     <>
-      <NavBar>
-        <Search query={query} setQuery={setQuery} />
-        <NumResults movies={movies} />
-      </NavBar>
+      <NavBar query={query} setQuery={setQuery} movies={movies} />
 
       <Main>
-        <Box>
-          {/* {isLoading ? <Loader /> : <MovieList movies={movies} />} */}
+        <Box className="box1">
           {isLoading && <Loader />}
           {!isLoading && !error && (
             <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
@@ -61,7 +55,7 @@ export default function App() {
           {error && <ErrorMessage message={error} />}
         </Box>
 
-        <Box>
+        <Box className="box2">
           {selectedId ? (
             <MovieDetails
               selectedId={selectedId}
