@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Cinemate/static/css/main.a6bf9e64.css",
+    "main.css": "/Cinemate/static/css/main.c5e00244.css",
     "main.js": "/Cinemate/static/js/main.4988a197.js",
     "index.html": "/Cinemate/index.html",
-    "main.a6bf9e64.css.map": "/Cinemate/static/css/main.a6bf9e64.css.map",
+    "main.c5e00244.css.map": "/Cinemate/static/css/main.c5e00244.css.map",
     "main.4988a197.js.map": "/Cinemate/static/js/main.4988a197.js.map"
   },
   "entrypoints": [
-    "static/css/main.a6bf9e64.css",
+    "static/css/main.c5e00244.css",
     "static/js/main.4988a197.js"
   ]
 }
