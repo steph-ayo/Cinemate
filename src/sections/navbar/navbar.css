@@ -57,6 +57,7 @@
   .nav-bar {
     height: 7.2rem;
     padding: 0 0.7rem;
+    border-radius: 0rem;
   }
 
   .logo {
@@ -70,12 +71,12 @@
   }
 
   .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
 
   .search {
     padding: 1.1rem 1.6rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     width: 15rem;
   }
 
